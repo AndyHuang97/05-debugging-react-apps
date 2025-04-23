@@ -1,5 +1,11 @@
 import { calculateInvestmentResults, formatter } from "../util/investment.js";
 
+// if results array is declared outside the function, it will not be reset
+// between renders, leading to incorrect results (the list will keep growing)
+// react's strict mode will call the component twice in development mode
+// which will cause the results to be duplicated
+//const results = [];
+
 export default function Results({ input }) {
   const results = [];
   calculateInvestmentResults(input, results);
